@@ -62,6 +62,12 @@ fw_chars = (
 "ｙｚ｛｜｝￣￥"
 )
 
+# Potrace has issues with these glyphs for some reason
+# so we'll draw these ones manually
+manual_glyphs = {
+	'■': [[(1200,1000), (1200,-100), (100,-100), (100,1000)]]
+}
+
 root = os.path.dirname(os.path.abspath(__file__))
 glyph_root = os.path.join(root, 'glyphs')
 
@@ -90,22 +96,33 @@ curr_index = 0
 
 def add_character(char, index, is_full):
 	global curr_index
+	curr_index += 1
+	name = unicodedata.name(char)
 	if not char in font:
 		gl = font.createChar(ord(char))
 	else:
 		gl = font[char]
 	if is_full:
 		gl.width = 1200
-		path = 'full%d.png'
+		sprite = 'full%d.png'
 	else:
 		gl.width = 600
-		path = 'half%d.png'
-	gl.importOutlines(os.path.join(glyph_root, path % index))
-	name = unicodedata.name(char)
-	curr_index += 1
-	print(f'[{curr_index:>3}/{total_chars}] Tracing {name}...')
-	gl.autoTrace()
-	gl.clear(0)
+		sprite = 'half%d.png'
+
+	if char in manual_glyphs:
+		print(f'[{curr_index:>3}/{total_chars}] Manually drawing {name}...')
+		pen = gl.glyphPen();
+		for path in manual_glyphs[char]:
+			pen.moveTo(path[0])
+			for point in path[1:]:
+				pen.lineTo(point)
+			pen.closePath()
+		pen = None
+	else:
+		gl.importOutlines(os.path.join(glyph_root, sprite % index))
+		print(f'[{curr_index:>3}/{total_chars}] Tracing {name}...')
+		gl.autoTrace()
+		gl.clear(0)
 	gl.validate()
 
 for i, c in enumerate(hw_chars):

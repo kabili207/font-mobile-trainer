@@ -15,12 +15,12 @@ InvalidEm: 0
 LayerCount: 2
 Layer: 0 0 "Back" 1
 Layer: 1 0 "Fore" 0
-XUID: [1021 581 -1790305691 10526548]
+XUID: [1021 693 2075872912 8070766]
 OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
-CreationTime: 1722032814
-ModificationTime: 1722032908
+CreationTime: 1722034745
+ModificationTime: 1722034840
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -17860,15 +17860,15 @@ EndChar
 StartChar: filledbox
 Encoding: 9632 9632 308
 Width: 1200
-Flags: HW
+Flags: H
 LayerCount: 2
 Fore
 SplineSet
-1200 1000 m 5
- 1200 -100 l 1
- 100 -100 l 1
- 100 1000 l 1
- 1200 1000 l 5
+1200 1000 m 0
+ 1200 -100 l 0
+ 100 -100 l 0
+ 100 1000 l 0
+ 1200 1000 l 0
 EndSplineSet
 Validated: 1
 EndChar
