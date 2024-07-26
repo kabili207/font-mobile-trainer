@@ -9,7 +9,7 @@ hw_chars = (
 "@ABCDEFGHIJKLMNO"
 "PQRSTUVWXYZ[\\]^_"
 "`abcdefghijklmno"
-"pqrstuvwxyz{|}~"
+"pqrstuvwxyz{|}~\u00a0"
 # Mobile Trainer does not support the half-width kana
 )
 
