@@ -105,6 +105,7 @@ def add_character(char, index, is_full):
 	curr_index += 1
 	print(f'[{curr_index:>3}/{total_chars}] Tracing {name}...')
 	gl.autoTrace()
+	gl.clear(0)
 	gl.validate()
 
 for i, c in enumerate(hw_chars):
