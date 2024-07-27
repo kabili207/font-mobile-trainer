@@ -5,7 +5,7 @@ FamilyName: Mobile Trainer
 Weight: Regular
 Copyright: Copyright (c) 2001 Nintendo.
 UComments: "2024-7-26: Created with FontForge (http://fontforge.org)"
-Version: 1.01
+Version: 1.02
 ItalicAngle: 0
 UnderlinePosition: -150
 UnderlineWidth: 100
@@ -20,7 +20,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1722034745
-ModificationTime: 1722034840
+ModificationTime: 1722055496
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -151,7 +151,15 @@ SplineSet
  400 800 l 1
  450 800 l 1
  500 800 l 1
- 500 600 l 1
+ 500 900 l 1
+ 500 1000 l 1
+ 550 1000 l 1
+ 600 1000 l 1
+ 600 850 l 1
+ 600 700 l 1
+ 550 700 l 1
+ 500 700 l 1
+ 500 550 l 1
  500 400 l 1
  550 400 l 1
  600 400 l 1
@@ -1815,15 +1823,11 @@ SplineSet
  500 1000 l 1
  500 950 l 1
  500 900 l 1
- 350 900 l 1
- 200 900 l 1
- 200 850 l 1
- 200 800 l 1
- 300 800 l 1
- 400 800 l 1
- 400 500 l 1
- 400 200 l 1
- 450 200 l 1
+ 550 900 l 1
+ 600 900 l 1
+ 600 550 l 1
+ 600 200 l 1
+ 550 200 l 1
  500 200 l 1
  500 150 l 1
  500 100 l 1
@@ -1846,7 +1850,19 @@ SplineSet
  150 900 l 1
  200 900 l 1
  200 950 l 1
-300 450 m 1
+500 550 m 1
+ 500 900 l 1
+ 350 900 l 1
+ 200 900 l 1
+ 200 850 l 1
+ 200 800 l 1
+ 300 800 l 1
+ 400 800 l 1
+ 400 500 l 1
+ 400 200 l 1
+ 350 200 l 1
+ 300 200 l 1
+ 300 450 l 1
  300 700 l 1
  250 700 l 1
  200 700 l 1
@@ -1868,9 +1884,9 @@ SplineSet
  400 100 l 1
  400 150 l 1
  400 200 l 1
- 350 200 l 1
- 300 200 l 1
- 300 450 l 1
+ 450 200 l 1
+ 500 200 l 1
+ 500 550 l 1
 EndSplineSet
 Validated: 5
 EndChar
@@ -2402,15 +2418,6 @@ Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-500 100 m 1
- 500 200 l 1
- 550 200 l 1
- 600 200 l 1
- 600 100 l 1
- 600 0 l 1
- 550 0 l 1
- 500 0 l 1
- 500 100 l 1
 100 500 m 1
  100 1000 l 1
  150 1000 l 1
@@ -2427,7 +2434,15 @@ SplineSet
  400 700 l 1
  450 700 l 1
  500 700 l 1
- 500 550 l 1
+ 500 850 l 1
+ 500 1000 l 1
+ 550 1000 l 1
+ 600 1000 l 1
+ 600 500 l 1
+ 600 0 l 1
+ 550 0 l 1
+ 500 0 l 1
+ 500 200 l 1
  500 400 l 1
  450 400 l 1
  400 400 l 1
@@ -2924,11 +2939,11 @@ SplineSet
  400 400 l 1
  450 400 l 1
  500 400 l 1
- 500 500 l 1
- 500 600 l 1
- 550 600 l 1
- 600 600 l 1
- 600 500 l 1
+ 500 700 l 1
+ 500 1000 l 1
+ 550 1000 l 1
+ 600 1000 l 1
+ 600 700 l 1
  600 400 l 1
  550 400 l 1
  500 400 l 1

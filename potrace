@@ -4,12 +4,8 @@
 argv=("$0" "$@") # $# == ${#argv[@]} + 1
 last=${argv[$#]}
 
-newwidth=$(( $(identify -format "%w" -- "$last") * 10))
-newheight=$(( $(identify -format "%h" -- "$last") * 10))
-
 args=${argv[@]:1:$#-1}
 args=$(echo "$args" | sed -r 's/ -r ([0-9]+)/ -r \10/g')
 
-cat $last | mkbitmap -s 1 |
-    convert -scale "${newwidth}x${newheight}" - - |
+convert $last -filter point -resize 1000% BMP:- |
     /usr/bin/potrace $args -a 0 -- -

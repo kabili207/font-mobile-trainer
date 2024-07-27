@@ -63,8 +63,7 @@ fw_chars = (
 "ｙｚ｛｜｝￣￥"
 )
 
-# Potrace has issues with these glyphs for some reason
-# so we'll draw these ones manually
+# Allows us to manually add path splines
 manual_glyphs = {
 	'■': [[(1200,1000), (1200,-100), (100,-100), (100,1000)]]
 }
@@ -77,13 +76,13 @@ if not os.path.exists(glyph_root):
 
 subprocess.run([
 	'magick', 'convert', os.path.join(root, 'jis_half.png'),
-	'-crop', '6x12', '+repage', '+adjoin',
+	'-crop', '6x12', '+repage', '+adjoin', '-define', 'png:color-type=3',
 	os.path.join(glyph_root, 'half%d.png')
 	])
 	
 subprocess.run([
 	'magick', 'convert', os.path.join(root, 'jis_full.png'),
-	'-crop', '12x12', '+repage', '+adjoin',
+	'-crop', '12x12', '+repage', '+adjoin', '-define', 'png:color-type=3',
 	os.path.join(glyph_root, 'full%d.png')
 	])
 
@@ -145,7 +144,7 @@ font.encoding = 'compacted'
 font.fontname = font_name.replace(' ','')
 font.fullname = font_name
 font.familyname = font_name
-font.version = '1.01'
+font.version = '1.02'
 font.copyright = 'Copyright (c) 2001 Nintendo.'
 
 font.save(sfd_name)
