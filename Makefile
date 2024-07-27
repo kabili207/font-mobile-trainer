@@ -6,7 +6,7 @@ sfd_out := ${out}.sfd
 all: sfd web
 
 sfd: make_font.py jis_half.png jis_full.png
-	fontforge -script make_font.py "${sfd_out}" "${name}"
+	PATH="${PWD}:${PATH}" fontforge -script make_font.py "${sfd_out}" "${name}"
 
 web: ttf woff woff2
 

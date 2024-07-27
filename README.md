@@ -6,11 +6,8 @@ It was created as part of the [REON Project](https://github.com/REONTeam/), whic
 ![image](https://github.com/user-attachments/assets/58117e99-e9ef-4600-85a1-1d6ddabdc472)
 
 ### Build Dependencies
-Aside from the potrace shim, all of these should be available in the package repos of most standard Linux distros
+All of these should be available in the package repos of most standard Linux distros
 - FontForge (with python support)
 - ImageMagick
 - Potrace
-- The included `potrace` shim
-  - Place at `/usr/local/bin` so it overrides the system version
-  - This is needed to force potrace to properly trace pixel art
 
