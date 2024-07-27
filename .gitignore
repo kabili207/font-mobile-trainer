@@ -1,3 +1,5 @@
 *.ttf
+*.woff
+*.woff2
 *.sfd-*
 glyphs/

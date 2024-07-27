@@ -2,6 +2,7 @@ import fontforge
 import subprocess
 import os
 import unicodedata
+from sys import argv
 
 hw_chars = (
 " !\"#$%&'()*+,-./"
@@ -86,7 +87,13 @@ subprocess.run([
 	os.path.join(glyph_root, 'full%d.png')
 	])
 
-font = fontforge.font()
+sfd_name = argv[1]
+font_name = argv[2]
+
+if os.path.exists(sfd_name):
+	font = fontforge.open(sfd_name)
+else:
+	font = fontforge.font()
 font.ascent = 1000
 font.descent = 200
 font.encoding = "Unicode"
@@ -98,10 +105,9 @@ def add_character(char, index, is_full):
 	global curr_index
 	curr_index += 1
 	name = unicodedata.name(char)
-	if not char in font:
-		gl = font.createChar(ord(char))
-	else:
-		gl = font[char]
+	gl = font.createChar(ord(char))
+	gl.clear()
+	
 	if is_full:
 		gl.width = 1200
 		sprite = 'full%d.png'
@@ -136,11 +142,11 @@ font.upos = -150
 font.uwidth = 100
 
 font.encoding = 'compacted'
-font.fontname = "MobileTrainer" # no spaces!
-font.fullname = "Mobile Trainer"
-font.familyname = "Mobile Trainer"
+font.fontname = font_name.replace(' ','')
+font.fullname = font_name
+font.familyname = font_name
 font.version = '1.01'
 font.copyright = 'Copyright (c) 2001 Nintendo.'
 
-font.save("MobileTrainer.sfd")
+font.save(sfd_name)
 font.close()
