@@ -65,7 +65,7 @@ fw_chars = (
 
 # Allows us to manually add path splines
 manual_glyphs = {
-	'■': [[(1200,1000), (1200,-100), (100,-100), (100,1000)]]
+	#'■': [[(1200,1000), (1200,-100), (100,-100), (100,1000)]]
 }
 
 root = os.path.dirname(os.path.abspath(__file__))
@@ -128,6 +128,7 @@ def add_character(char, index, is_full):
 		print(f'[{curr_index:>3}/{total_chars}] Tracing {name}...')
 		gl.autoTrace()
 		gl.clear(0)
+	gl.simplify()
 	gl.validate()
 
 for i, c in enumerate(hw_chars):
