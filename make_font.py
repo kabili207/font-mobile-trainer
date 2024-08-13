@@ -10,7 +10,7 @@ hw_chars = (
 "@ABCDEFGHIJKLMNO"
 "PQRSTUVWXYZ[\\]^_"
 "`abcdefghijklmno"
-"pqrstuvwxyz{|}~\u00a0"
+"pqrstuvwxyz{|}~\u007f"
 # Mobile Trainer does not support the half-width kana
 )
 
@@ -64,8 +64,11 @@ fw_chars = (
 )
 
 # Allows us to manually add path splines
-manual_glyphs = {
+manual_full = {
 	#'■': [[(1200,1000), (1200,-100), (100,-100), (100,1000)]]
+}
+manual_half = {
+	'\u00a0': []
 }
 
 root = os.path.dirname(os.path.abspath(__file__))
@@ -97,45 +100,63 @@ font.ascent = 1000
 font.descent = 200
 font.encoding = "Unicode"
 	
-total_chars = len(hw_chars) + len(fw_chars)
+total_chars = len(hw_chars) + len(fw_chars) + len(manual_full) + len(manual_half)
 curr_index = 0
 
-def add_character(char, index, is_full):
+def create_glyph(char, is_full):
 	global curr_index
 	curr_index += 1
-	name = unicodedata.name(char)
+	try:
+		name = unicodedata.name(char)
+	except:
+		name = f"CONTROL CHARACTER {ord(char)}"
 	gl = font.createChar(ord(char))
 	gl.clear()
-	
 	if is_full:
 		gl.width = 1200
-		sprite = 'full%d.png'
 	else:
 		gl.width = 600
-		sprite = 'half%d.png'
+	return gl, name
 
-	if char in manual_glyphs:
-		print(f'[{curr_index:>3}/{total_chars}] Manually drawing {name}...')
-		pen = gl.glyphPen();
-		for path in manual_glyphs[char]:
-			pen.moveTo(path[0])
-			for point in path[1:]:
-				pen.lineTo(point)
-			pen.closePath()
-		pen = None
-	else:
-		gl.importOutlines(os.path.join(glyph_root, sprite % index))
-		print(f'[{curr_index:>3}/{total_chars}] Tracing {name}...')
-		gl.autoTrace()
-		gl.clear(0)
+def finish_glyph(gl):
 	gl.simplify()
 	gl.validate()
 
+def add_character(char, index, is_full):
+	gl, name = create_glyph(char, is_full)
+	if is_full:
+		sprite = 'full%d.png'
+	else:
+		sprite = 'half%d.png'
+	gl.importOutlines(os.path.join(glyph_root, sprite % index))
+	print(f'[{curr_index:>3}/{total_chars}] Tracing {name}...')
+	gl.autoTrace()
+	gl.clear(0) # Remove background
+	finish_glyph(gl)
+
+def add_manually(char, splines, is_full):
+	gl, name = create_glyph(char, is_full)
+	print(f'[{curr_index:>3}/{total_chars}] Manually drawing {name}...')
+	pen = gl.glyphPen();
+	for path in splines:
+		pen.moveTo(path[0])
+		for point in path[1:]:
+			pen.lineTo(point)
+		pen.closePath()
+	pen = None
+	finish_glyph(gl)
+
 for i, c in enumerate(hw_chars):
 	add_character(c, i, False)
-	
+
+for c, s in manual_half.items():
+	add_manually(c, s, False)
+
 for i, c in enumerate(fw_chars):
 	add_character(c, i, True)
+
+for c, s in manual_full.items():
+	add_manually(c, s, True)
 
 # Keep these down here, they seem to mess with the image tracing
 font.upos = -150
@@ -145,7 +166,7 @@ font.encoding = 'compacted'
 font.fontname = font_name.replace(' ','')
 font.fullname = font_name
 font.familyname = font_name
-font.version = '1.02'
+font.version = '1.03'
 font.copyright = 'Copyright (c) 2001 Nintendo.'
 
 font.save(sfd_name)

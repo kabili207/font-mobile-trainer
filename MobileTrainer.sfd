@@ -5,7 +5,7 @@ FamilyName: Mobile Trainer
 Weight: Regular
 Copyright: Copyright (c) 2001 Nintendo.
 UComments: "2024-7-26: Created with FontForge (http://fontforge.org)"
-Version: 1.02
+Version: 1.03
 ItalicAngle: 0
 UnderlinePosition: -150
 UnderlineWidth: 100
@@ -20,7 +20,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1722034745
-ModificationTime: 1722055599
+ModificationTime: 1723519079
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
@@ -43,7 +43,7 @@ NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-BeginChars: 65536 619
+BeginChars: 65536 620
 
 StartChar: space
 Encoding: 32 32 0
@@ -24779,6 +24779,32 @@ SplineSet
  400 700 l 1
  400 800 l 1
  300 800 l 1
+EndSplineSet
+Validated: 5
+EndChar
+
+StartChar: uni007F
+Encoding: 127 127 619
+Width: 600
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+500 0 m 1
+ 500 1000 l 1
+ 600 1000 l 1
+ 600 0 l 1
+ 500 0 l 1
+ 500 -100 l 1
+ 100 -100 l 1
+ 100 0 l 1
+ 200 0 l 1
+ 200 100 l 1
+ 300 100 l 1
+ 300 200 l 1
+ 400 200 l 1
+ 400 0 l 1
+ 500 0 l 1
 EndSplineSet
 Validated: 5
 EndChar
