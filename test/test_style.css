@@ -1,0 +1,52 @@
+:root {
+	--gb-scale: 2;
+}
+
+@font-face {
+    font-family: 'Mobile Trainer';
+    src: url('../MobileTrainer.woff2') format('woff2'),
+        url('../MobileTrainer.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+	background-color: cornflowerblue;
+}
+body {
+}
+
+.gb-window {
+	image-rendering: pixelated;
+	background-color: white;
+	font-family: 'Mobile Trainer';
+	font-size: calc(12px * var(--gb-scale));
+	line-height: calc(12px * var(--gb-scale));
+	width: calc(144px * var(--gb-scale));
+	border: calc(5px  * var(--gb-scale)) solid white;
+	margin: auto;
+	font-smooth: never;
+    -webkit-font-smoothing: none;
+	font-optical-sizing: none;
+}
+
+.gb-window hr {
+	border: 0;
+	border-color: #000;
+	border-top: calc(1px * var(--gb-scale)) solid #000;
+	margin-bottom: calc(5px * var(--gb-scale));
+}
+
+.gb-window ul {
+  list-style: none; /* Remove list bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.gb-window li {
+}
+
+.gb-window li::before {
+  content: "\30fb";
+}
